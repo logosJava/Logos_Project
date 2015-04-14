@@ -31,6 +31,14 @@ public class Department {
 	@OneToMany(mappedBy="department", fetch = FetchType.EAGER)
 	private Set<SubjectAndCourse> subjectAndCourse;
 	
+	@ManyToOne()
+	@JoinColumn(name="id_Student")
+	private Students student;
+	
+	@ManyToOne()
+	@JoinColumn(name="id_Teacher")
+	private Teachers teacher;
+	
 	public Department() {
 		
 	}

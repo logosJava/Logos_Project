@@ -37,7 +37,7 @@ public class TeachersServiceImpl implements TeachersService {
 		 newTeacher.setLastName(teacher.getLastName());
 		 newTeacher.setYearOfBirth(teacher.getYearOfBirth());
 		 newTeacher.setCourse(teacher.getCourse());
-		 newTeacher.setIdDepartment(teacher.getIdDepartment());
+		 newTeacher.setDepartments(teacher.getDepartments());
 		return (Teachers) dao.save(newTeacher);
 	}
 
@@ -51,5 +51,10 @@ public class TeachersServiceImpl implements TeachersService {
 	@Transactional
 	public Page<Teachers> filterTeacherByName(Pageable firstName) {
 		return dao.findAll(firstName);
+	}
+
+	@Override
+	public Iterable<Teachers> sortTeacherByDepartment(Sort departments) {
+		return dao.findAll(departments);
 	}
 }

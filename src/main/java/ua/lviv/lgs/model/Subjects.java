@@ -36,22 +36,6 @@ public class Subjects {
 	private Set<SubjectAndCourse> subjectAndCourse;
 	
 	
-	public Set<SubjectAndCourse> getSubjectAndCourse() {
-		return subjectAndCourse;
-	}
-
-	public void setSubjectAndCourse(Set<SubjectAndCourse> subjectAndCourse) {
-		this.subjectAndCourse = subjectAndCourse;
-	}
-
-	public List<Marks> getMarks() {
-		return marks;
-	}
-
-	public void setMarks(List<Marks> marks) {
-		this.marks = marks;
-	}
-
 	public Subjects() {
 		
 	}
@@ -78,13 +62,31 @@ public class Subjects {
 
 	public void setTeachers(Teachers teachers) {
 		this.teachers = teachers;
+		}
+	
+	public Set<SubjectAndCourse> getSubjectAndCourse() {
+		return subjectAndCourse;
+	}
+
+	public void setSubjectAndCourse(Set<SubjectAndCourse> subjectAndCourse) {
+		this.subjectAndCourse = subjectAndCourse;
+	}
+
+	public List<Marks> getMarks() {
+		return marks;
+	}
+
+	public void setMarks(List<Marks> marks) {
+		this.marks = marks;
 	}
 
 	@Override
 	public String toString() {
-		return "Subject [id=" + id + ", name=" + name + ", teachers="
-				+ teachers + "]";
+		return "Subjects [name=" + name + ", teachers=" + teachers + ", marks="
+				+ marks + ", subjectAndCourse=" + subjectAndCourse + "]";
 	}
+	
+	
 	
 	
 	

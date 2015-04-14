@@ -32,10 +32,10 @@ public class Teachers {
 	private int course;
 	
 	@Column
-	private int idDepartment;
-	
-	@Column
 	private String urlPicture;
+	
+	@OneToMany(mappedBy="id_department", fetch= FetchType.EAGER)
+	private Set<Department> departments;
 	
 	@OneToMany(mappedBy="teachers", fetch= FetchType.EAGER)
 	private Set<Subjects> subjects;
@@ -84,17 +84,26 @@ public class Teachers {
 		this.course = course;
 	}
 
-	public int getIdDepartment() {
-		return idDepartment;
+	public Set<Department> getDepartments() {
+		return departments;
 	}
 
-	public void setIdDepartment(int idDepartment) {
-		this.idDepartment = idDepartment;
+	public void setDepartments(Set<Department> departments) {
+		this.departments = departments;
 	}
-	
+
+	public Set<Subjects> getSubjects() {
+		return subjects;
+	}
+
+	public void setSubjects(Set<Subjects> subjects) {
+		this.subjects = subjects;
+	}
+
 	public String toString() {
 		return ("Detailed information about this Teacher: 1. Teacher's ID: " + id + "2. Teacher's First Name: " + 
 	firstName + "3. Teacher's Last Name: " + lastName +  "4. Teacher's Year of Birth: " + yearOfBirth + 
-	"5.Course:" + course + 	"6. Id Depetment: " + idDepartment + "7. Teacher's photo");
+	"5.Course:" + course + 	"6.Departments, on which teacher works: " + departments + 
+	"7. Subjects tought by tercher: "+  subjects +" 8. Teacher's photo");
 	}
 }

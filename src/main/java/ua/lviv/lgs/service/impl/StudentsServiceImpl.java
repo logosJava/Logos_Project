@@ -41,7 +41,7 @@ public class StudentsServiceImpl implements StudentsService {
 		newStudent.setLastName(student.getLastName());
 		newStudent.setYearOfBirth(student.getYearOfBirth());
 		newStudent.setCourse(student.getCourse());
-		newStudent.setIdDepartment(student.getIdDepartment());
+		newStudent.setDepartments(student.getDepartments());
 		newStudent.setMarks(student.getMarks());
 		return (Students) dao.save(newStudent);
 		
@@ -64,6 +64,12 @@ public class StudentsServiceImpl implements StudentsService {
 		studentWithAddedMark.setMarks(marks);
 		dao.save(studentWithAddedMark);
 		}
+
+	@Override
+	public Iterable<Students> sortStudentsByDepartment(Sort departments) {
+		return dao.findAll(departments);
+	}
+	
 	
 
 }

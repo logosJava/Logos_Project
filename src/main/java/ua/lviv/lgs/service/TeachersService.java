@@ -12,5 +12,6 @@ public interface TeachersService {
 	public void addTeacher(Teachers teacher);
 	public Teachers editTeacher(Integer id, Teachers teacher);
 	public Iterable<Teachers> sortTeacherByName(Sort firstName);
+	public Iterable<Teachers> sortTeacherByDepartment(Sort departments);
 	public Page<Teachers> filterTeacherByName(Pageable firstName);
 	}

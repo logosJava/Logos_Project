@@ -33,22 +33,15 @@ public class Students {
 	private int course;
 	
 	@Column
-	private int idDepartment;
-	
-	@Column
 	private String urlPicture;
+	
+	@OneToMany(mappedBy="id_Department", fetch= FetchType.EAGER)
+	private Set<Department> departments;
 	
 	@OneToMany(mappedBy="students", fetch= FetchType.EAGER)
 	private List<Marks> marks;
 	
-	public List<Marks> getMarks() {
-		return marks;
-	}
-
-	public void setMarks(List<Marks> marks) {
-		this.marks = marks;
-	}
-
+	
 	public Students() {
 		
 	}
@@ -69,10 +62,6 @@ public class Students {
 		return yearOfBirth;
 	}
 
-	public int getIdDepartment() {
-		return idDepartment;
-	}
-
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -89,10 +78,7 @@ public class Students {
 		this.yearOfBirth = yearOfBirth;
 	}
 
-	public void setIdDepartment(int idDepartment) {
-		this.idDepartment = idDepartment;
-	}
-
+	
 	public void setUrlPicture(String urlPicture) {
 		this.urlPicture = urlPicture;
 	}
@@ -105,12 +91,28 @@ public class Students {
 	public void setCourse(int course) {
 		this.course = course;
 	}
+	
+	public List<Marks> getMarks() {
+		return marks;
+	}
 
+	public void setMarks(List<Marks> marks) {
+		this.marks = marks;
+	}
+	
+	public Set<Department> getDepartments() {
+		return departments;
+	}
+
+	public void setDepartments(Set<Department> departments) {
+		this.departments = departments;
+	}
 
 	public String toString() {
 		return ("Detailed information about this Student: 1. Student's ID: " + id + "2. Student's First Name: "
 				+ firstName + "3. Student's Last Name: " + lastName +  
 				"4. Student's Year of Birth: " + yearOfBirth + "5. Student's course"+
-				course + "6. Id Depetment: " + idDepartment + "7. Student's photo" + "8. Student's marks" + marks);
+				course + "6.Departments, on which student studies: " + departments + 
+				 "7. Student's marks" + marks + "8. Student's photo");
 	}
 }

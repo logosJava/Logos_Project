@@ -14,6 +14,8 @@ public interface StudentsService {
 	public void addStudent(Students student);
 	public Students editStudent(Integer id, Students student);
 	public Iterable<Students> sortStudentsByName(Sort firstName);
+	public Iterable<Students> sortStudentsByDepartment(Sort departments);
 	public Page <Students> filteredByName(Pageable firstName); 
 	public void addMarkToStudent(Integer id, Students student, List<Marks> marks);
+	
 }
