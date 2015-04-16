@@ -12,10 +12,10 @@ import ua.lviv.lgs.model.Subjects;
 public interface StudentsService {
 	public Iterable<Students> viewAllStudents();
 	public void addStudent(Students student);
-	public Students editStudent(Integer id, Students student);
-	public Iterable<Students> sortStudentsByName(Sort firstName);
-	public Iterable<Students> sortStudentsByDepartment(Sort departments);
-	public Page <Students> filteredByName(Pageable firstName); 
-	public void addMarkToStudent(Integer id, Students student, List<Marks> marks);
+	public void editStudent(Integer id, Students student);
+	/*public Iterable<Students> sortStudentsByParametr(Sort parametr);
+	public Page <Students> filteredByParemetr(Pageable parametr); 
+	public void addMarkToStudent(Integer id, Students student, List<Marks> marks);*/
+	public void deleteStudent(Integer id);
 	
 }

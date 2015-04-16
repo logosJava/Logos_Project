@@ -1,10 +1,14 @@
 package ua.lviv.lgs.model;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -20,9 +24,8 @@ public class Marks {
 	@Column
 	private int value;
 	
-	@ManyToOne
-	@JoinColumn(name="id_students")
-	private Students student;
+	@ManyToMany(mappedBy="marks", fetch= FetchType.EAGER)
+	private Set<Students> students;
 	
 	@ManyToOne
 	@JoinColumn(name="id_subjects")
@@ -48,12 +51,12 @@ public class Marks {
 		this.value = value;
 	}
 
-	public Students getStudent() {
-		return student;
+	public Set<Students> getStudents() {
+		return students;
 	}
 
-	public void setStudent(Students student) {
-		this.student = student;
+	public void setStudents(Set<Students> students) {
+		this.students = students;
 	}
 
 	public Subjects getSubject() {
@@ -66,10 +69,10 @@ public class Marks {
 
 	@Override
 	public String toString() {
-		return "Marks [id=" + id + ", value=" + value + ", student=" + student
-				+ ", subject=" + subject + "]";
+		return "Marks [id=" + id + ", value=" + value + ", students="
+				+ students + ", subject=" + subject + "]";
 	}
-	
-	
-	
+
 }
+	
+	

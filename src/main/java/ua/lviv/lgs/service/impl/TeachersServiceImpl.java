@@ -31,17 +31,24 @@ public class TeachersServiceImpl implements TeachersService {
 
 	@Override
 	@Transactional
-	public Teachers editTeacher(Integer id, Teachers teacher) {
+	public void editTeacher(Integer id, Teachers teacher) {
 		 Teachers newTeacher = (Teachers) dao.findOne(id);
 		 newTeacher.setFirstName(teacher.getFirstName());
 		 newTeacher.setLastName(teacher.getLastName());
 		 newTeacher.setYearOfBirth(teacher.getYearOfBirth());
 		 newTeacher.setCourse(teacher.getCourse());
 		 newTeacher.setDepartments(teacher.getDepartments());
-		return (Teachers) dao.save(newTeacher);
+		 dao.save(newTeacher);
 	}
 
 	@Override
+	@Transactional
+	public void deleteTeacher(Integer id) {
+		dao.delete(id);
+		
+	}
+
+	/*@Override
 	@Transactional
 	public Iterable<Teachers> sortTeacherByName(Sort firstName) {
 		return dao.findAll(firstName);
@@ -56,5 +63,5 @@ public class TeachersServiceImpl implements TeachersService {
 	@Override
 	public Iterable<Teachers> sortTeacherByDepartment(Sort departments) {
 		return dao.findAll(departments);
-	}
+	}*/
 }

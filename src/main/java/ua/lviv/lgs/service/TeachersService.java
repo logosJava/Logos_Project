@@ -10,8 +10,8 @@ public interface TeachersService {
 	
 	public Iterable<Teachers> viewAllTeachers();
 	public void addTeacher(Teachers teacher);
-	public Teachers editTeacher(Integer id, Teachers teacher);
-	public Iterable<Teachers> sortTeacherByName(Sort firstName);
-	public Iterable<Teachers> sortTeacherByDepartment(Sort departments);
-	public Page<Teachers> filterTeacherByName(Pageable firstName);
+	public void editTeacher(Integer id, Teachers teacher);
+	/*public Iterable<Teachers> sortTeacherByParametr(Sort parametr);
+	public Page<Teachers> filterTeacherByParametr(Pageable parametr);*/
+	public void deleteTeacher(Integer id);
 	}

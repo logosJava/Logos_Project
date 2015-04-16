@@ -35,7 +35,7 @@ public class StudentsServiceImpl implements StudentsService {
 	}
 
 	@Override
-	public Students editStudent(Integer id, Students student) {
+	public void editStudent(Integer id, Students student) {
 		Students newStudent = (Students) dao.findOne(id);
 		newStudent.setFirstName(student.getFirstName());
 		newStudent.setLastName(student.getLastName());
@@ -43,11 +43,17 @@ public class StudentsServiceImpl implements StudentsService {
 		newStudent.setCourse(student.getCourse());
 		newStudent.setDepartments(student.getDepartments());
 		newStudent.setMarks(student.getMarks());
-		return (Students) dao.save(newStudent);
+		dao.save(newStudent);
 		
 	}
 
 	@Override
+	@Transactional
+	public void deleteStudent(Integer id) {
+		dao.delete(id);
+	}
+
+	/*@Override
 	@Transactional
 	public Iterable<Students> sortStudentsByName(Sort firstName) {
 		return dao.findAll(firstName);
@@ -58,17 +64,11 @@ public class StudentsServiceImpl implements StudentsService {
 		return dao.findAll(firstName);
 	}
 
-	@Override
-	public void addMarkToStudent(Integer id,  Students student, List<Marks> marks) {
-		Students studentWithAddedMark = (Students)dao.findOne(id);
-		studentWithAddedMark.setMarks(marks);
-		dao.save(studentWithAddedMark);
-		}
-
+	
 	@Override
 	public Iterable<Students> sortStudentsByDepartment(Sort departments) {
 		return dao.findAll(departments);
-	}
+	}*/
 	
 	
 

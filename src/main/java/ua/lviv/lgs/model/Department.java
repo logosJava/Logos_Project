@@ -31,13 +31,11 @@ public class Department {
 	@OneToMany(mappedBy="department", fetch = FetchType.EAGER)
 	private Set<SubjectAndCourse> subjectAndCourse;
 	
-	@ManyToOne()
-	@JoinColumn(name="id_Student")
-	private Students student;
+	@OneToMany(mappedBy="department", fetch= FetchType.EAGER)
+	private Set<Students> students;
 	
-	@ManyToOne()
-	@JoinColumn(name="id_Teacher")
-	private Teachers teacher;
+	@OneToMany(mappedBy="department", fetch= FetchType.EAGER)
+	private Set<Teachers> teachers;
 	
 	public Department() {
 		
@@ -62,6 +60,31 @@ public class Department {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	
+	public Set<SubjectAndCourse> getSubjectAndCourse() {
+		return subjectAndCourse;
+	}
+
+	public void setSubjectAndCourse(Set<SubjectAndCourse> subjectAndCourse) {
+		this.subjectAndCourse = subjectAndCourse;
+	}
+
+	public Set<Students> getStudents() {
+		return students;
+	}
+
+	public void setStudents(Set<Students> students) {
+		this.students = students;
+	}
+
+	public Set<Teachers> getTeachers() {
+		return teachers;
+	}
+
+	public void setTeachers(Set<Teachers> teachers) {
+		this.teachers = teachers;
 	}
 
 	@Override

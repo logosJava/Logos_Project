@@ -8,6 +8,10 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -35,10 +39,12 @@ public class Students {
 	@Column
 	private String urlPicture;
 	
-	@OneToMany(mappedBy="id_Department", fetch= FetchType.EAGER)
-	private Set<Department> departments;
+	@ManyToOne()
+	@JoinColumn(name="id_department")
+	private Department department;
 	
-	@OneToMany(mappedBy="students", fetch= FetchType.EAGER)
+	@ManyToMany()
+	@JoinTable(name="Students_Marks", joinColumns={@JoinColumn(name="id_students")},inverseJoinColumns={@JoinColumn(name="id_mark")}) 
 	private List<Marks> marks;
 	
 	
@@ -92,27 +98,29 @@ public class Students {
 		this.course = course;
 	}
 	
-	public List<Marks> getMarks() {
+		public List<Marks> getMarks() {
 		return marks;
 	}
 
 	public void setMarks(List<Marks> marks) {
 		this.marks = marks;
 	}
+
 	
-	public Set<Department> getDepartments() {
-		return departments;
+
+	public Department getDepartments() {
+		return department;
 	}
 
-	public void setDepartments(Set<Department> departments) {
-		this.departments = departments;
+	public void setDepartments(Department departments) {
+		this.department = department;
 	}
 
 	public String toString() {
 		return ("Detailed information about this Student: 1. Student's ID: " + id + "2. Student's First Name: "
 				+ firstName + "3. Student's Last Name: " + lastName +  
 				"4. Student's Year of Birth: " + yearOfBirth + "5. Student's course"+
-				course + "6.Departments, on which student studies: " + departments + 
-				 "7. Student's marks" + marks + "8. Student's photo");
+				course + "6.Department, on which student studies: " + department + 
+				 "7. Student's marks" + marks + "8. Student's photo:");
 	}
 }
