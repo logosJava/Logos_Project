@@ -13,7 +13,7 @@ public interface StudentsService {
 	public Iterable<Students> viewAllStudents();
 	public void addStudent(Students student);
 	public void editStudent(Integer id, Students student);
-	/*public Iterable<Students> sortStudentsByParametr(Sort parametr);
+	/*public Iterable<Students> sortStudentsByParametr(Sort parametr); // Create Sort parameter in controller and simple pass sort parameter in dao.findAll();
 	public Page <Students> filteredByParemetr(Pageable parametr); 
 	public void addMarkToStudent(Integer id, Students student, List<Marks> marks);*/
 	public void deleteStudent(Integer id);
