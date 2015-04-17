@@ -55,8 +55,9 @@ public class StudentsServiceImpl implements StudentsService {
 
 	/*@Override
 	@Transactional
-	public Iterable<Students> sortStudentsByName(Sort firstName) {
-		return dao.findAll(firstName);
+	public Iterable<Students> sortStudentsByName(String firstName) {
+		Sort s = new Sort("first_name",firstName);
+		return dao.findAll(s);
 	}
 
 	@Override
